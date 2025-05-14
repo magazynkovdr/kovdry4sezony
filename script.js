@@ -14,6 +14,8 @@ const sendForm = async () => {
         quantity: Number(quantityInput.value),
     };
 
+    clearForm();
+
     const response = await fetch("/api/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,8 +40,6 @@ const sendForm = async () => {
                                     </div>
                                 </div>`;
     }
-
-    clearForm();
 };
 
 const clearForm = () => {
@@ -48,6 +48,9 @@ const clearForm = () => {
     document.querySelector("#address").value = '';
     sizeSelect.value = '155x210';
     quantityInput.value = '1';
+    quantity = 1;
+    sizePrice = 1250;
+    updatePrice();
 }
 
 const quantityInput = document.querySelector('#quantityInput');
