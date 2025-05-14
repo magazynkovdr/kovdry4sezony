@@ -1,4 +1,18 @@
-const sendForm = async () => {
+const formSubmit = document.querySelector('#submitForm');
+const quantityInput = document.querySelector('#quantityInput');
+const decrementButton = document.querySelector('#decrement');
+const incrementButton = document.querySelector('#increment');
+const phoneInput = document.querySelector('#phone');
+const totalPrice = document.querySelector('#price');
+const sizeSelect = document.querySelector('#size');
+const modal = document.querySelector('.my-modal');
+const modalTitle = document.querySelector('.modal-content-title');
+const modalIcon = document.querySelector('.modal-content-icon');
+const modalButton = document.querySelector('.my-close-modal');
+
+formSubmit.addEventListener('click', async () => {
+    formSubmit.disabled = true;
+
     phoneInput.value = phoneInput.value.replace(/\D/g, "");
 
     if (phoneInput.value.length !== 12) {
@@ -40,7 +54,9 @@ const sendForm = async () => {
                                     </div>
                                 </div>`;
     }
-};
+
+    formSubmit.disabled = false;
+})
 
 const clearForm = () => {
     document.querySelector("#name").value = '';
@@ -52,17 +68,6 @@ const clearForm = () => {
     sizePrice = 1250;
     updatePrice();
 }
-
-const quantityInput = document.querySelector('#quantityInput');
-const decrementButton = document.querySelector('#decrement');
-const incrementButton = document.querySelector('#increment');
-const phoneInput = document.querySelector('#phone');
-const totalPrice = document.querySelector('#price');
-const sizeSelect = document.querySelector('#size');
-const modal = document.querySelector('.my-modal');
-const modalTitle = document.querySelector('.modal-content-title');
-const modalIcon = document.querySelector('.modal-content-icon');
-const modalButton = document.querySelector('.my-close-modal');
 
 modalButton.addEventListener('click', () => {
     modal.style.display = 'none';
@@ -145,6 +150,7 @@ sizeSelect.addEventListener('change', (e) => {
 
     updatePrice();
 })
+
 
 quantityInput.addEventListener('change', () => {
     const inputedQuantity = quantityInput.value;
